@@ -1,0 +1,62 @@
+{
+  "schema": "predator.public-compiler-pilot.v1",
+  "title": "IBM Fez compiler-quality pilot",
+  "date": "2026-09-06",
+  "backend": "ibm_fez",
+  "scope": "One six-variable fixture, two poles, one hardware job; compiler quality, not quantum computational advantage.",
+  "hardware_jobs": 1,
+  "circuits": 4,
+  "shots_per_circuit": 1024,
+  "billed_qpu_seconds": 3,
+  "two_qubit_gates": {
+    "ordinary": 144,
+    "joint5": 103,
+    "reduction_percent": 28.47222222222222
+  },
+  "independent_confirmation": false,
+  "source_metrics_sha256": "96fc51fc142d3e315084e4d1d215d06abe41b5c57737bc7e14c6305bae1dd304",
+  "source_report_sha256": "b1e83633a85b533fba1fb4f4fde97151ee1f68442818b7e5b22cfb5b9e6414d4",
+  "compiled_plan_sha256": "a986dcc6c83b2c68294044b93d64434cb221bf7cef49ba7f32557e8f5d1950e1",
+  "poles": {
+    "vuln": {
+      "ordinary_tv": 0.395174696119255,
+      "joint5_tv": 0.31652264875085345,
+      "absolute_tv_improvement": 0.07865204736840153,
+      "relative_tv_reduction_percent": 19.90310820525464,
+      "improvement_sampling_only_95_interval": [
+        0.03661510031489964,
+        0.11740010894452227
+      ],
+      "ordinary_expected_energy": -2.3453522495288945,
+      "joint5_expected_energy": -2.0137675683103016,
+      "ordinary_exact_optimum_hits": 0,
+      "joint5_exact_optimum_hits": 1
+    },
+    "fix": {
+      "ordinary_tv": 0.40385858268563324,
+      "joint5_tv": 0.3079578515744551,
+      "absolute_tv_improvement": 0.09590073111117814,
+      "relative_tv_reduction_percent": 23.74611688909631,
+      "improvement_sampling_only_95_interval": [
+        0.052002245992500105,
+        0.13595158991557985
+      ],
+      "ordinary_expected_energy": -2.3668366245288945,
+      "joint5_expected_energy": -1.9545898437499998,
+      "ordinary_exact_optimum_hits": 2,
+      "joint5_exact_optimum_hits": 2
+    }
+  },
+  "uncertainty": {
+    "replicates": 2000,
+    "seed": 20260906,
+    "method": "Independent multinomial plug-in percentile bootstrap",
+    "scope": "Sampling only; no calibration drift or independent confirmation coverage."
+  },
+  "limits": [
+    "One fixture and one job; poles are not independent source seeds.",
+    "Agreement with the fixed ideal output improved; expected energy increased, so this is not improved minimization.",
+    "No source-detection, deep-chain lift, quantum advantage, or supremacy claim.",
+    "Public summary is an author-reported extract, not the full raw reproducibility bundle. Source hashes provide identity, not independent verification."
+  ]
+}

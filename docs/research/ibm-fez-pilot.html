@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>IBM Fez compiler pilot · Predator</title><link rel="icon" href="../assets/mark.svg"><link rel="stylesheet" href="../styles.css"></head><body><main class="measurement shell"><h1>IBM Fez: a bounded compiler-quality pilot</h1>
+<p><strong>September 6, 2026 · Aether AI / Predator research</strong></p>
+<p><a href="../index.html">← Project overview</a> · <a href="ibm-pilot.json">Result JSON</a></p>
+<p>AQRC’s <strong>joint5</strong> compilation reduced the native two-qubit gate count from <strong>144 to 103</strong> on each of two tested poles. Hardware output moved closer to the corresponding exact ideal distribution on both poles.</p>
+<p>This supports a narrow conclusion: a cleaner implementation of the fixed circuits in this acquisition. It does not establish improved optimization or quantum computational advantage.</p>
+<h2>Experiment</h2>
+<p>The pilot used <strong>one six-variable fixture</strong>, its vulnerable and fixed poles, and <strong>one IBM Fez hardware job</strong>. Each pole was compiled through ordinary and joint5 paths, producing four circuits at <strong>1,024 shots each</strong>. The recorded billed QPU time was <strong>3 seconds</strong>.</p>
+<p>The objectives, angles, shot counts, and initial physical layout were held fixed. The two poles are related measurements from the same fixture and acquisition, not independent source seeds or independent confirmations.</p>
+<h2>Output agreement</h2>
+<p>Total-variation (TV) distance measures the difference between the measured output distribution and the exact ideal distribution. Lower is better. The site uses the same 0–0.5 display scale for every bar.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Metric</th>
+<th align="right">Vulnerable pole</th>
+<th align="right">Fixed pole</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Ordinary TV</td>
+<td align="right">0.3951746961</td>
+<td align="right">0.4038585827</td>
+</tr>
+<tr>
+<td align="left">joint5 TV</td>
+<td align="right">0.3165226488</td>
+<td align="right">0.3079578516</td>
+</tr>
+<tr>
+<td align="left">Absolute improvement</td>
+<td align="right">0.0786520474</td>
+<td align="right">0.0959007311</td>
+</tr>
+<tr>
+<td align="left">Relative TV reduction</td>
+<td align="right">19.9%</td>
+<td align="right">23.7%</td>
+</tr>
+<tr>
+<td align="left">Native two-qubit gates</td>
+<td align="right">144 → 103</td>
+<td align="right">144 → 103</td>
+</tr>
+</tbody></table>
+<p>Relative TV reduction is <code>(ordinary TV − joint5 TV) / ordinary TV</code>. Gate reduction is <code>(144 − 103) / 144 = 28.47%</code>, displayed as <strong>28.5%</strong>.</p>
+<h2>Uncertainty</h2>
+<p>The sampling-only 95% intervals for ordinary-minus-joint5 TV improvement are:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Pole</th>
+<th align="left">Sampling-only 95% interval</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Vulnerable</td>
+<td align="left">[0.036615, 0.117400]</td>
+</tr>
+<tr>
+<td align="left">Fixed</td>
+<td align="left">[0.052002, 0.135952]</td>
+</tr>
+</tbody></table>
+<p>These are plug-in percentile intervals from <strong>2,000 independent multinomial bootstrap replicates per arm</strong>, seed <strong>20260906</strong>. They cover sampling uncertainty, not calibration drift or an independently repeated experiment. Independent confirmation has not been performed.</p>
+<h2>Optimization is a different question</h2>
+<p>Expected energy increased under joint5, which is worse for this minimization objective:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Metric</th>
+<th align="right">Ordinary</th>
+<th align="right">joint5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Vulnerable expected energy</td>
+<td align="right">−2.345352</td>
+<td align="right">−2.013768</td>
+</tr>
+<tr>
+<td align="left">Fixed expected energy</td>
+<td align="right">−2.366837</td>
+<td align="right">−1.954590</td>
+</tr>
+<tr>
+<td align="left">Vulnerable exact-optimum hits / 1,024</td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="left">Fixed exact-optimum hits / 1,024</td>
+<td align="right">2</td>
+<td align="right">2</td>
+</tr>
+</tbody></table>
+<p>Closer agreement with a fixed ideal distribution does not itself establish better objective values. These results do not establish source-detection gains, improved deep-chain feedback, quantum computational advantage, or supremacy.</p>
+<h2>Provenance</h2>
+<p>This is an <strong>author-reported public extract</strong> of the retained September 6 pilot report and metrics. It includes a curated numerical summary, not raw acquisition artifacts, executable circuits, or the proprietary implementation. Fingerprints identify the source artifacts; they do not independently verify the measurements.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Retained artifact</th>
+<th align="left">SHA-256</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Metrics</td>
+<td align="left"><code>96fc51fc142d3e315084e4d1d215d06abe41b5c57737bc7e14c6305bae1dd304</code></td>
+</tr>
+<tr>
+<td align="left">Pilot report</td>
+<td align="left"><code>b1e83633a85b533fba1fb4f4fde97151ee1f68442818b7e5b22cfb5b9e6414d4</code></td>
+</tr>
+<tr>
+<td align="left">Compiled plan</td>
+<td align="left"><code>a986dcc6c83b2c68294044b93d64434cb221bf7cef49ba7f32557e8f5d1950e1</code></td>
+</tr>
+</tbody></table>
+<p>Full-precision public values are available in <a href="ibm-pilot.json">ibm-pilot.json</a>. For research discussion, <a href="https://aethersystems.net/">contact Aether AI</a>.</p>
+<p>IBM is identified as the hardware provider. No IBM affiliation or endorsement is implied.</p>
+</main></body></html>
